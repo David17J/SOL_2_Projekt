@@ -21,6 +21,12 @@ router.post("/", (req, res) => {
 // Eine Notiz löschen
 router.delete("/:id", (req, res) => {
   const noteId = parseInt(req.params.id);
+  const exists = notes.some((n) => n.id === noteId);
+
+  if (!exists) {
+    return res.status(404).json({ message: "Notiz nicht gefunden" });
+  }
+
   notes = notes.filter((n) => n.id !== noteId);
   res.status(204).send();
 });

@@ -1,8 +1,17 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>NoteBuddy</title>
   </head>
-  <body></body>
+  <body>
+    <h1>NoteBuddy</h1>
+    <div id="notes"></div>
+    <form id="noteForm">
+      <input type="text" id="title" placeholder="Titel" required />
+      <textarea id="content" placeholder="Inhalt" required></textarea>
+      <button type="submit">Notiz hinzufügen</button>
+    </form>
+    <script src="app.js"></script>
+  </body>
 </html>
