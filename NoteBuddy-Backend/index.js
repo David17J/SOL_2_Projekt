@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const notesRoutes = require("./routes/notes");
 
 const app = express();
 const PORT = 3000;
@@ -7,10 +8,8 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-// Testroute
-app.get("/", (req, res) => {
-  res.send("NoteBuddy Backend läuft ");
-});
+// Routen
+app.use("/api/notes", notesRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server läuft auf http://localhost:${PORT}`);
