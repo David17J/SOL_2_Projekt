@@ -1,9 +1,9 @@
 class Note {
-  constructor(id, title, content, createdAt = new Date()) {
+  constructor(id, title, description = "", status = "offen") {
     this.id = id;
     this.title = title;
-    this.content = content;
-    this.createdAt = createdAt;
+    this.description = description;
+    this.status = status;
   }
 }
 
