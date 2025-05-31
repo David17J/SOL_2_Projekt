@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>NoteBuddy Board</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoteBuddy</title>
+    <link rel="stylesheet" href="/NoteBuddy-Frontend/styles/main.css" />
   </head>
   <body>
-    <h1>NoteBuddy Board</h1>
-    <div id="board">
-      <div class="column" id="tasks-column">
-        <div class="column-header">
-          <span>Aufgaben</span>
-          <button id="add-note-btn">+</button>
-        </div>
-        <div id="notes-container"></div>
+    <!-- HEADER-BALKEN -->
+    <header class="nb-header">
+      <div class="nb-header-left">
+        <span class="nb-header-icon">☰</span>
+        <span class="nb-header-title">NoteBuddy Aufgabenboard</span>
       </div>
-    </div>
-    <div id="modal" class="modal hidden"></div>
-    <script src="script.js"></script>
+      <button class="nb-add-channel-btn">+ Kanal hinzufügen</button>
+    </header>
   </body>
+  <script src="scripts/main.js"></script>
 </html>
