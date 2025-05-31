@@ -2,29 +2,21 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NoteBuddy</title>
+    <title>NoteBuddy Board</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>NoteBuddy</h1>
-
-      <!-- Formular zum Hinzufügen/Bearbeiten -->
-      <form id="noteForm">
-        <input
-          type="text"
-          id="noteInput"
-          placeholder="Neue Notiz..."
-          required
-        />
-        <button type="submit">Speichern</button>
-      </form>
-
-      <!-- Notizen-Liste -->
-      <ul id="notesList"></ul>
+    <h1>NoteBuddy Board</h1>
+    <div id="board">
+      <div class="column" id="tasks-column">
+        <div class="column-header">
+          <span>Aufgaben</span>
+          <button id="add-note-btn">+</button>
+        </div>
+        <div id="notes-container"></div>
+      </div>
     </div>
-
+    <div id="modal" class="modal hidden"></div>
     <script src="script.js"></script>
   </body>
 </html>

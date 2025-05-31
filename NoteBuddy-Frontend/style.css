@@ -1,62 +1,102 @@
 body {
   font-family: Arial, sans-serif;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  background: #f4f6fa;
+  margin: 0;
+  padding: 30px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 35px;
 }
 
-.container {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#noteForm {
+#board {
   display: flex;
-  margin-bottom: 20px;
+  gap: 30px;
+  justify-content: center;
 }
 
-#noteInput {
+.column {
+  background: #e3e9f2;
+  border-radius: 12px;
+  padding: 20px;
+  width: 340px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+}
+
+.column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.3em;
+  margin-bottom: 18px;
+  font-weight: bold;
+}
+
+#notes-container {
   flex: 1;
-  padding: 10px;
-  font-size: 16px;
 }
 
-button {
-  padding: 10px 15px;
-  background: #007bff;
-  color: white;
+.note-card {
+  background: #fff;
+  padding: 12px 15px 12px 12px;
+  border-radius: 7px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.note-card h2 {
+  margin: 0 0 7px 0;
+  font-size: 1.1em;
+  color: #173554;
+}
+
+.note-card .desc {
+  color: #374151;
+  font-size: 0.98em;
+  margin-bottom: 6px;
+}
+.note-card .meta {
+  font-size: 0.93em;
+  color: #888;
+  margin-bottom: 4px;
+}
+.note-card .actions {
+  position: absolute;
+  top: 9px;
+  right: 12px;
+  display: flex;
+  gap: 7px;
+}
+.note-card .actions button {
+  background: none;
   border: none;
-  border-radius: 4px;
+  font-size: 1.07em;
   cursor: pointer;
 }
 
-button:hover {
-  background: #0056b3;
-}
-
-#notesList {
-  list-style: none;
-  padding: 0;
-}
-
-.note-item {
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.18);
   display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background: white;
-  margin-bottom: 8px;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
-
-.delete-btn,
-.edit-btn {
-  background: #dc3545;
-  margin-left: 5px;
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 13px;
+  min-width: 310px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
-
-.edit-btn {
-  background: #ffc107;
+.hidden {
+  display: none;
 }
