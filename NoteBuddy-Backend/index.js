@@ -37,3 +37,5 @@ app.listen(PORT, () => {
   console.log(`NoteBuddy Backend läuft auf http://localhost:${PORT}`);
   console.log(`Swagger UI: http://localhost:${PORT}/api-docs`);
 });
+
+//Test
