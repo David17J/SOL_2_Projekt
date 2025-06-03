@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>NoteBuddy</title>
-    <link rel="stylesheet" href="/NoteBuddy-Frontend/styles/main.css" />
-  </head>
-  <body>
-    <!-- HEADER-BALKEN -->
-    <header class="nb-header">
-      <div class="nb-header-left">
+    <link rel="stylesheet" href="/NoteBuddy-Frontend/styles/main.css"/>
+    <script src="/NoteBuddy-Frontend/scripts/main.js" defer></script>
+    <script src="/NoteBuddy-Frontend/app.js" defer></script>
+</head>
+<body onload="loadNotes()">
+<!-- HEADER-BALKEN -->
+<header class="nb-header">
+    <div class="nb-header-left">
         <span class="nb-header-icon">☰</span>
         <span class="nb-header-title">NoteBuddy Aufgabenboard</span>
-      </div>
-      <button class="nb-add-channel-btn">+ Kanal hinzufügen</button>
-    </header>
-  </body>
-  <script src="scripts/main.js"></script>
+    </div>
+    <button class="nb-add-channel-btn" onclick="createNote2()">+ Kanal hinzufügen</button>
+</header>
+<div class="todo-container">
+    <h1>TO-DO</h1>
+    <div class="todo-list" id="notes">
+        <!--              Hier wird der dynamische Teil hinzugefügt-->
+    </div>
+</div>
+
+</body>
 </html>

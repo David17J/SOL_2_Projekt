@@ -55,3 +55,74 @@ main {
   min-height: 300px;
   /* Später kommt hier das Board-Layout rein */
 }
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.todo-container {
+  width: 8cm;
+  position: relative;
+  left: 20px;
+  top: 10px;
+  bottom: 20px;
+}
+
+h1 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #cccccc;
+}
+
+.todo-list {
+  background-color: #252526;
+  border-radius: 5px;
+  height: calc(100% - 50px);
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Scrollbar Styling */
+.todo-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 4px;
+}
+
+.todo-list::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+.todo-item {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #2d2d2d;
+  border-radius: 3px;
+  cursor: move;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.todo-item:hover {
+  background-color: #3c3c3c;
+}
+
+.todo-item.dragging {
+  opacity: 0.5;
+  background-color: #3c3c3c;
+}
+
+.todo-item.drag-over {
+  border-top: 2px solid #007acc;
+}
