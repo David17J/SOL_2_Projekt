@@ -128,3 +128,22 @@ h1 {
 .todo-item.drag-over {
   border-top: 2px solid #007acc;
 }
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menubutton {
+  color: white;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+}
+
+.todo {
+  border: solid 1px white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
