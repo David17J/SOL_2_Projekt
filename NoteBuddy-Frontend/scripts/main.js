@@ -1,59 +1,58 @@
-// function showMessage() {
-//   alert("Hallo FrontBuddy");
-// }
-// document.addEventListener("DOMContentLoaded", showMessage);
-//
-// function showMessage2() {
-//   console.log("Hallo Entwicklerwelt");
-// }
-//
-// document.addEventListener("DOMContentLoaded", showMessage2);
-
-// Hier können später Funktionen für die Interaktivität hinzugefügt werden
-document.addEventListener("DOMContentLoaded", function () {
+function addDragAndDropListeners() {
   const todoList = document.querySelector(".todo-list");
-  const todoItems = document.querySelectorAll(".todo-item");
+  const todoItems = todoList.querySelectorAll(".todo-item");
 
   todoItems.forEach((item) => {
-    // Macht das Element draggable
     item.draggable = true;
 
-    item.addEventListener("dragstart", function (e) {
-      e.target.classList.add("dragging");
-    });
+    // Verhindere, dass die Events mehrfach hinzugefügt werden
+    item.removeEventListener("dragstart", dragStartHandler);
+    item.removeEventListener("dragend", dragEndHandler);
+    item.removeEventListener("dragover", dragOverHandler);
 
-    item.addEventListener("dragend", function (e) {
-      e.target.classList.remove("dragging");
-    });
-
-    item.addEventListener("dragover", function (e) {
-      e.preventDefault();
-      const draggingItem = document.querySelector(".dragging");
-      const notDraggingItems = [
-        ...todoList.querySelectorAll(".todo-item:not(.dragging)"),
-      ];
-
-      // Findet das nächstgelegene Element
-      const nextItem = notDraggingItems.reduce(
-        (closest, child) => {
-          const box = child.getBoundingClientRect();
-          const offset = e.clientY - box.top - box.height / 2;
-
-          if (offset < 0 && offset > closest.offset) {
-            return { offset: offset, element: child };
-          } else {
-            return closest;
-          }
-        },
-        { offset: Number.NEGATIVE_INFINITY }
-      ).element;
-
-      if (nextItem) {
-        todoList.insertBefore(draggingItem, nextItem);
-      } else {
-        todoList.appendChild(draggingItem);
-      }
-    });
+    item.addEventListener("dragstart", dragStartHandler);
+    item.addEventListener("dragend", dragEndHandler);
+    item.addEventListener("dragover", dragOverHandler);
   });
-});
 
+  function dragStartHandler(e) {
+    e.target.classList.add("dragging");
+  }
+
+  function dragEndHandler(e) {
+    e.target.classList.remove("dragging");
+  }
+
+  function dragOverHandler(e) {
+    e.preventDefault();
+    const draggingItem = document.querySelector(".dragging");
+    const notDraggingItems = [
+      ...todoList.querySelectorAll(".todo-item:not(.dragging)"),
+    ];
+
+    const nextItem = notDraggingItems.reduce(
+      (closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = e.clientY - box.top - box.height / 2;
+
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      },
+      { offset: Number.NEGATIVE_INFINITY }
+    ).element;
+
+    if (nextItem) {
+      todoList.insertBefore(draggingItem, nextItem);
+    } else {
+      todoList.appendChild(draggingItem);
+    }
+  }
+}
+
+// Beim Laden erstmal Eventlistener für alle vorhandenen Items setzen
+document.addEventListener("DOMContentLoaded", function () {
+  addDragAndDropListeners();
+});
