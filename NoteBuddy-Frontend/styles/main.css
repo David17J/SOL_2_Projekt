@@ -1,9 +1,11 @@
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f7f9fb;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  color: #ffffff;
 }
+
 
 .nb-header {
   display: flex;
@@ -56,21 +58,10 @@ main {
   /* Später kommt hier das Board-Layout rein */
 }
 
-body {
-  margin: 0;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: #1e1e1e;
-  color: #ffffff;
-}
 
 .todo-container {
   width: 8cm;
-  position: relative;
-  left: 20px;
-  top: 10px;
-  bottom: 20px;
-  height: 500px;
+  /*position: relative;*/
 }
 
 h1 {
@@ -80,7 +71,6 @@ h1 {
 }
 
 .todo-list {
-  height: 100%;
   background-color: #252526;
   border-radius: 5px;
   height: calc(100% - 50px);
@@ -146,4 +136,127 @@ h1 {
   border: solid 1px white;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+/* Task Window Styles */
+.window {
+  width: 100%;
+  padding: 10px;
+  margin-top: 40px;
+  background: #252526;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  font-family: Arial, sans-serif;
+}
+
+.task-header{
+  padding: 16px;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 10px;
+  color: white;
+  padding: 2px 8px;
+}
+
+.close-button:hover {
+  color: #495057;
+}
+
+.window-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.window-content {
+  padding: 16px;
+}
+
+.task-header2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 10px;
+}
+
+.status-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-section p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.status-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.status-icons img {
+  cursor: pointer;
+  transition: transform 0.2s;
+  opacity: 0.7;
+}
+
+.status-icons img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.add-date-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #495057;
+  transition: all 0.2s;
+}
+
+.add-date-button:hover {
+  background-color: #f1f3f5;
+  border-color: #adb5bd;
+}
+
+.description-section p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+}
+
+.task-description-input {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  /*resize: vertical;*/
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.task-description-input:focus {
+  outline: none;
+  border-color: #adb5bd;
+  box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.1);
 }
