@@ -249,7 +249,7 @@ h1 {
   padding: 10px;
   border: 1px solid #dee2e6;
   border-radius: 4px;
-  /*resize: vertical;*/
+  resize: vertical;
   font-family: inherit;
   font-size: 0.9rem;
   line-height: 1.4;
