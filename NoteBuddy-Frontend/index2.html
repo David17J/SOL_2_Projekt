@@ -4,26 +4,22 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>NoteBuddy</title>
-    <link rel="stylesheet" href="/NoteBuddy-Frontend/styles/main.css"/>
-    <script src="/NoteBuddy-Frontend/scripts/main.js" defer></script>
-    <script src="/NoteBuddy-Frontend/app.js" defer></script>
+    <link rel="stylesheet" href="/NoteBuddy-Frontend/styles/index2.css"/>
+    <script src="/NoteBuddy-Frontend/scripts/index2.js" defer></script>
 </head>
-<body onload="loadNotes()">
-<!-- HEADER-BALKEN -->
-<header class="nb-header">
-    <div class="nb-header-left">
-        <span class="nb-header-icon">☰</span>
-        <span class="nb-header-title">NoteBuddy Aufgabenboard</span>
+<body onload="loadimage()">
+
+<div style="display: flex; flex-direction: column">
+    <div id="d1" class="divstyle" style="border-color: red;">1</div>
+    <div id="d2" class="divstyle" style="border-color: green;">2</div>
+    <div id="d3" class="divstyle" style="border-color: blue;">
+        <img id="img1" src="assets/status-offen.svg"/>
     </div>
-    <button class="nb-add-channel-btn" onclick="createNote2()">+ Kanal hinzufügen</button>
-</header>
-<div style="display: flex; flex-direction: row">
-    <div style="display:flex; flex-direction: row; background-color: red; padding: 10px">1
-        <div>Hallo</div><div>Welt</div>
+    <div>
+        <button onclick="changepicture()">change Picture</button>
     </div>
-    <div style="background-color: green; padding: 10px">2</div>
-    <div style="background-color: blue ; padding: 10px">3</div>
 </div>
+
 
 </body>
 </html>

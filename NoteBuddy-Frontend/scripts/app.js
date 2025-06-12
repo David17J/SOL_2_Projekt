@@ -43,15 +43,48 @@ function loadNote(noteId) {
 
             // Clear previous content
             formElement.innerHTML = '';
-            let note = response.data;            // Create and populate note element
-            const noteElement = document.createElement('div');
+            let note = response.data;
+            // Create and populate note element
+            let noteElement = document.createElement('div');
             noteElement.className = 'note-detail';
             noteElement.innerHTML = `
-                <h2> ${note.title || 'No Title'}</h2>
-                <p>${note.description || 'No Description'}</p>
-                <div class="note-meta">
-                    <span>Status: ${note.status || 'unknown'}</span>
+                
+                
+        <div class="task-header" style="align-content: space-between">
+            <h1 class="window-title">${note.title || 'No Title'}</h1>
+            <button class="close-button" onclick="">×</button>
+        </div>
+
+        <div class="window-content" style="display: flex; flex-direction: column">
+            <div class="task-header2" style="display: flex; flex-direction: row">
+                <div class=Status: ${note.status || 'unknown'}>
+                    <p>Status</p>
                 </div>
+                <div class="status-group">
+                    <div class="status-icons">
+                        <img alt="Status-Icons1" height="25" width="25" src="assets/status-abgeschlossen.svg">
+                        <img alt="Status-Icons3" height="25" width="25" src="assets/status-inbearbeitung.svg">
+                        <img alt="Status-Icons2" height="25" width="25" src="assets/status-offen.svg">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                           <button type="button" class="btn btn-primary">
+                           <i class="bi bi-check2-circle"></i>
+</button>
+                           <button type="button" class="btn btn-primary">Middle</button>
+                           <button type="button" class="btn btn-primary">Right</button>
+                    </div>
+                    </div>
+                </div>
+                <div class="add-date-button">
+                    <span class="calendar-icon">📅</span>
+                    Termin hinzufügen
+                </div>
+            </div>
+
+            <div class=${note.description || 'No Description'}>
+                <p>Aufgabenbeschreibung</p>
+                <textarea id="textinput" class="task-description-input" placeholder="Beschreibung eingeben..."></textarea>
+            </div>
+        </div>
             `;
 
             formElement.appendChild(noteElement);
@@ -105,6 +138,8 @@ function createNote(note) {
 // });
 
 // loadNotes();
+
+
 
 class Note {
     constructor(id, title, description = "", status = "offen") {
