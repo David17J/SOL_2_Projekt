@@ -58,19 +58,27 @@ function loadNote(noteId) {
         <div class="window-content" style="display: flex; flex-direction: column">
             <div class="task-header2" style="display: flex; flex-direction: row">
                 <div class=Status: ${note.status || 'unknown'}>
-                    <p>Status</p>
+                    <p>Status : ${note.status || 'unknown'}</p>
                 </div>
                 <div class="status-group">
                     <div class="status-icons">
-                        <img alt="Status-Icons1" height="25" width="25" src="assets/status-abgeschlossen.svg">
-                        <img alt="Status-Icons3" height="25" width="25" src="assets/status-inbearbeitung.svg">
-                        <img alt="Status-Icons2" height="25" width="25" src="assets/status-offen.svg">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                           <button type="button" class="btn btn-primary">
-                           <i class="bi bi-check2-circle"></i>
-</button>
-                           <button type="button" class="btn btn-primary">Middle</button>
-                           <button type="button" class="btn btn-primary">Right</button>
+<div class="btn-group" role="group" aria-label="Status">
+  <input type="radio" class="btn-check" name="status" id="status1" autocomplete="off" value="abgeschlossen">
+  <label class="btn btn-outline-success" for="status1">
+    <img src="assets/status-abgeschlossen.svg" alt="Erledigt" width="28" height="28">
+  </label>
+
+  <input type="radio" class="btn-check" name="status" onclick="updateStatus(${note.id},${note.status='inbearbeitung'})" ${note.status === 'inbearbeitung'?'checked':''} id="status2" autocomplete="off" value="inbearbeitung">
+  <label class="btn btn-outline-secondary" for="status2">
+    <img src="assets/status-inbearbeitung.svg" alt="In Bearbeitung" width="28" height="28">
+  </label>
+
+  <input type="radio" class="btn-check" name="status" id="status3" autocomplete="off" value="offen">
+  <label class="btn btn-outline-danger" for="status3">
+    <img src="assets/status-offen.svg" alt="Abgebrochen" width="28" height="28">
+  </label>
+</div>
+
                     </div>
                     </div>
                 </div>
@@ -98,17 +106,21 @@ function loadNote(noteId) {
         });
 }
 
-function createNote2() {
-    const newNote = new Note(
-        2323,
-        "Einkaufsliste",
-        "Hallo ich eine Beschreibung",
+function createNewNote() {
+    const newNote = new Note(undefined,
+        "Neue Aufgabe",
+        "Beschreibung",
         status || "offen"
     );
-    createNote(newNote);
+    createOrUpdate(newNote);
 }
 
-function createNote(note) {
+function updateNote(id, title, description, status) {
+    const note = new Note(id, title, description, status || "offen");
+    createOrUpdate(note);
+}
+
+function createOrUpdate(note) {
     fetch("http://localhost:3000/api/notes", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
