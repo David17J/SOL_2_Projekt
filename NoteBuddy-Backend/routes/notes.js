@@ -82,10 +82,20 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const notes = loadNotes();
   const { title, description, status } = req.body;
-  const newNote = new Note(Date.now(), title, description, status || "offen");
-  notes.push(newNote);
+  var newNote2 = req.body;
+  var note;
+  if(newNote2.id === undefined){
+    note = new Note(Date.now(), title, description, status || "offen");
+    notes.push(note);
+  }
+  else{
+    note = notes.find(n => n.id === id);
+    newNote2.title = note.title;
+    newNote2.status = note.status;
+    newNote2.description = note.description;
+  }
   saveNotes(notes);
-  res.status(201).json(newNote);
+  res.status(201).json(note);
 });
 
 /**
@@ -150,6 +160,61 @@ router.delete("/:id", (req, res) => {
   notes = notes.filter((n) => n.id != req.params.id);
   saveNotes(notes);
   res.status(204).end();
+});
+
+/**
+ * @swagger
+ * /api/notes/{id}:
+ *   get:
+ *     summary: Notiz abrufen
+ *     tags: [Notes]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: Die ID der Note
+ *     responses:
+ *       200:
+ *         description: Erfolgreich geliefert
+ */
+router.get("/:id", (req, res) => {
+  try {
+    // 1. ID validieren
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: "Ungültige ID" });
+    }
+
+    // 2. Notes laden
+    const notes = loadNotes();
+
+    // 3. Note suchen (strict equality für Typensicherheit)
+    const note = notes.find(n => n.id === id);
+
+    if (!note) {
+      return res.status(404).json({
+        error: "Note nicht gefunden",
+        suggestion: "Überprüfen Sie die ID oder laden Sie alle Notes mit GET /api/notes"
+      });
+    }
+
+    // 4. Erfolgsantwort
+    res.json({
+      status: "success",
+      data: {
+        note:note
+      }
+    });
+
+  } catch (error) {
+    console.error("Fehler in /api/notes/:id:", error);
+    res.status(500).json({
+      error: "Interner Serverfehler",
+      details: error.message
+    });
+  }
 });
 
 module.exports = router;
