@@ -260,3 +260,10 @@ h1 {
   border-color: #adb5bd;
   box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.1);
 }
+
+.status-icons img.selected {
+  border: 2px solid #2d81ff;
+  border-radius: 8px;
+  background: #23334d;
+  opacity: 1;
+}
